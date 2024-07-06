@@ -1,17 +1,13 @@
 import css from './ContactList.module.css'
-import { FaUser } from "react-icons/fa";
-import { BsFillTelephoneFill } from "react-icons/bs";
+import Contact from '../Contact/Contact';
 
-export default function contactList({ contacts, deleteContact }) {
+
+export default function ContactList({ contacts, deleteContact }) {
   return (
     <div className={css.contactsList}>
-        {contacts.map(contact => (
-            <div key={contact.id} className={css.contact}>
-                <p><FaUser size="12" />  {contact.name}</p>
-                <p><BsFillTelephoneFill size="12" /> {contact.number}</p>
-                <button onClick={() => deleteContact(contact.id)}>Delete</button>
-            </div>
+      {contacts.map(contact => (
+        <Contact key={contact.id} contact={contact} deleteContact={deleteContact} />
       ))}
     </div>
-  )
+  );
 }
